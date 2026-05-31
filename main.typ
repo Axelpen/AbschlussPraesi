@@ -73,9 +73,28 @@ eventuel im Urlaub sind.
 
 Support optional, manchmal schaffen es die Kunden auch selbst!! Trotzdem schlecht für die Kunden falls der "Fixer" es nicht dokummentiert hat
 
-#image("images/msgwin.png")
+#image("images/MsgWin.png")
 
 == Analyse - Kosten
+
+Das ganze gerne schöner machen, breiter 
+#table(
+    columns: (auto, auto, auto, auto, auto),
+  inset: 10pt,
+  align: horizon,
+  stroke: 0.5pt,
+  fill: (_, row) => if row == 0 { rgb("#d0e4f7") }
+                    else if calc.odd(row) { rgb("#f5f5f5") }
+                    else { white },
+  table.header(
+    [*Personalart*], [*Arbeitseinheit*], [*Kosten \ Pro \ Stunde*], [*Zeitaufwand*], [*Geschätzte Kosten*]
+  ),
+  [Auszubildender], [Projektumsetzung],       [115,00 €], [80h],  [9.200,00 €],
+  [Entwickler],     [Projektunterstützung],   [156,00 €], [5h],   [780,00 €],
+  [Pauschale],      [Ressourcenkosten],       [10,00 €],  [85h],  [850,00 €],
+  table.cell(colspan: 4)[*Gesamtkosten*],     [*10.830,00 €*],
+  )
+)
 
 = Durchführung
 == Durchführung - Anforderungen
@@ -86,25 +105,81 @@ Support optional, manchmal schaffen es die Kunden auch selbst!! Trotzdem schlech
   stroke: (x: 0.6pt, y: 0.6pt),
   inset: 10pt,
 
-  [#image("images/ncad.png", width: 100%)],
+  [#image("images/ihklogo.jpg", width: 100%)],
   [
-    - Maximal 70 Stunden
+    - 80 Stunden
     - Soll/Ist-Vergleich mit Zielsetzung muss erkennbar sein
     - Wirtschaftlichkeit muss berücksichtigt werden
     - Reales Projekt
   ],
 
-  [#image("images/MsgWin.png", width: 100%)],
+  [#image("images/ncad.png", width: 100%)],
   [
-    - Im Unternehmen etablierte Technologien
-    - Wirtschaftlichkeit/Nutzen
-    - Programming style guide
-    - eMantix
+    - Keine Veränderungen am MsgWin
+    - Keine Performance Einschränkungen des Users
+    - Verschlüsselt 
+    - Betriebssystem unabhängig
   ],
 )
 ])
 
+== Durchführung...
+Hier Vorgehensmodell\
+außerdem screenshots vom code? vllt iwas relevantes
 
+= Implementierung
+
+
+== Implementierung - Plugin
+- .NET 4.8
+- Bestehende MsgWin erweitern
+- ccPluginJ9 Schnittstelle von N.CAD
+
+== Implementierung - Server
+- ASP.NET Core
+- Docker
+- Steuerbar mit appsettings.json
+- Kommunikation per HTTP
+
+== Implementierung - Verifizierung
+- Extra slide hier um KLD-name + PC-Name zu erwähnen? KLD erklären?
+
+== Implementierung - Authentifizierung
+- Challenge Reponse hier erklären, SHA256 in Kombination mit HMAC und SHA256
+- Wie siehts im Code aus?
+- Beispiel Visuell mit Bild
+
+== Implementierung - Datenbank Anbindung
+- CRUD
+- Kurzer Ausschnitt wie das im Server-Projekt aussieht, vllt code snippets
+- ASP.NET Seamless integration,
+- Sql Server und sqlite zeigen, beide datenbanken gehen
+
+
+= Wirtschaftlichkeit 
+== Wirtschaftlichkeit - Armotisation
+Hier muss einfach das aus der Doku hin
+
+== Wirtschaftlichkeit - Qualität der Software
+- hier argumentieren, dass die generelle Qualität verbessert werden kann\
+indem bugs gefunden werden können.
+- Vllt auch erwähnen dass man das ganze als Service anbieten kann,\
+Quasi NCAD speichert die LOgs und wertet sie dann aus, vllt Premium Plan,\
+Damit NCAD Selber dann den Kunden anruft falls iwas auffälliges passiert.
+
+= Fazit
+== Fazit - Resultate
+- nice
+- gut
+- gelernt
+- supi
+
+= Vielen Dank für ihre Aufmerksamkeit!!!
+
+#show: appendix
+
+= Beispiele Touying
+== Im folgenden sind einfach Beispiele die hier mal drin bleiben bis die Doku fertig ist
 == Simple Animation
 
 We can use `#pause` to #pause display something later.
@@ -285,7 +360,6 @@ Fletcher Animation in Touying:
 #lorem(200)
 
 
-#show: appendix
 
 = Appendix
 
